@@ -69,13 +69,13 @@ class DB
 			if (!empty($this->DBName)) {
 				$dsn .= 'dbname=' . $this->DBName . ';';
 			}
-			$dsn .= 'charset=utf8;';
+			$dsn .= 'charset=utf8;'; /* utf8mb4 for emoji characters */
 			$this->pdo = new PDO($dsn,
 				$this->DBUser,
 				$this->DBPassword,
 				array(
 					//For PHP 5.3.6 or lower
-					PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",
+					PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8", /* utf8mb4 for emoji characters */
 					PDO::ATTR_EMULATE_PREPARES => false,
 
 					//长连接
